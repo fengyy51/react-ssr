@@ -1,16 +1,20 @@
 
 import React from 'react'
 export default class Home extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state={
-      res:''
+    this.state = {
+      res: ''
     }
   }
-  clickFetch(){
+  clickFetch() {
     console.log('de')
-    window.fetch('/hello').then((res)=>{
+    window.fetch('/helloe').then((res) => {
       console.log('res', res)
+      res.json().then(jsonData => {
+        console.log('res-data', jsonData)
+        this.setState({ 'res': jsonData.data.name })
+      })
     })
   }
   render() {
